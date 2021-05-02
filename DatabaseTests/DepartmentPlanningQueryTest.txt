@@ -1,0 +1,10 @@
+--This query will show when students are going to be taking the Databases course
+--The Databases course can be replaced with whatever course the department needs to plan for
+
+SELECT Star_ID, Course_Name, Semester_Season, Academic_Year
+FROM Student_Schedule 
+	INNER JOIN 
+	Courses ON Student_Schedule.Course_ID = Courses.Course_ID
+	INNER JOIN
+	Semester ON Student_Schedule.Semester_ID = Semester.Semester_ID
+	WHERE Course_Name = 'Databases'

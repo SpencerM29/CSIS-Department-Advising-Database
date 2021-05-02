@@ -1,0 +1,26 @@
+--This is the stored procedure that creates the base schedule for the student with the starid: fj2941en
+
+EXECUTE CreateStudentMasterQuery @Star_ID = 'fj2941en', @Dragon_ID = 13957205, @Student_Major = 'Computer Science', @Starting_Semester_ID = 20223, @Advisor_First_Name = 'John', @Advisor_Last_Name = 'Doe', @Student_Minor_1 = 'Computer Information Systems', @Student_Minor_2 = 'Computer Information Technology'
+
+
+--This is the query to see the student schedule for the student with starid fj2941en
+SELECT
+Course_Name,
+Requirement_Name,
+Semester_Season,
+Academic_Year
+FROM
+Student_Schedule AS S 
+	INNER JOIN 
+	Major_Catalog AS MC
+	ON S.Catalog_ID = MC.Catalog_ID
+	INNER JOIN
+	Courses AS C
+	ON S.Course_ID = C.Course_ID
+	INNER JOIN
+	Requirements AS R
+	ON S.Requirement_ID = R.Requirement_ID
+	INNER JOIN
+	Semester AS Sem
+	ON S.Semester_ID = Sem.Semester_ID
+WHERE Star_ID = 'fj2941en'
