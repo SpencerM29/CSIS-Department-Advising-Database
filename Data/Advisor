@@ -1,2 +1,0 @@
-INSERT INTO Advisor VALUES(1, 1, 'Kristofer', 'Schlieper', 'kristofer.schlieper@mnstate.edu');
-INSERT INTO Advisor VALUES(2, 2, 'John', 'Doe', 'john.doe@mnstate.edu');
