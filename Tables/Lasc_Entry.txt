@@ -1,0 +1,8 @@
+CREATE TABLE Lasc_Entry (
+Lasc_Entry_ID		INT		UNIQUE		NOT NULL,
+Lasc_Enrollment_ID		INT		NULL,
+Course_ID		INT		NULL,
+Semester_Taken		INT		NULL,
+Completed		BIT		NULL,
+PRIMARY KEY(Lasc_Entry_ID)
+);

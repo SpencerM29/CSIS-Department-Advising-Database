@@ -1,0 +1,9 @@
+CREATE TABLE Student_Schedule (
+Entry_ID	INT	UNIQUE		NOT NULL,
+Star_ID		NVARCHAR(10)	NULL,
+Catalog_ID	INT	NULL,
+Course_ID	INT	NULL,
+Requirement_ID		INT	NULL,
+Semester_ID		INt	NULL,
+PRIMARY KEY(Entry_ID)
+);

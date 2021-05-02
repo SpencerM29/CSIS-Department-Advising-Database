@@ -1,0 +1,8 @@
+CREATE TABLE Major_Entry (
+Major_Entry_ID		INT		UNIQUE		NOT NULL,
+Enrollment_ID		INT		NULL,
+Course_ID		INT		NULL,
+Semester_Taken		INT		NULL,
+Completed		BIT		NULL,
+PRIMARY KEY(Major_Entry_ID)
+);

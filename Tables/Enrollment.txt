@@ -1,0 +1,5 @@
+CREATE TABLE Enrollment (
+Enrollment_ID		INT		UNIQUE		NOT NULL,
+Star_ID		NVARCHAR(10)		NULL,
+PRIMARY KEY(Enrollment_ID)
+);

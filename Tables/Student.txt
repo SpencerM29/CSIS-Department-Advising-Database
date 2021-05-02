@@ -1,0 +1,9 @@
+CREATE TABLE Student (
+Star_ID		NVARCHAR(10)		UNIQUE		NOT NULL,
+Dragon_ID	NVARCHAR(20)		NULL,
+Catalog_ID		INT		NULL,
+Minor_Catalog_ID_1		INT		NULL,
+Minor_Catalog_ID_2		INT		NULL,
+Advisor_ID		INT		NULL,
+PRIMARY KEY(Star_ID)
+);

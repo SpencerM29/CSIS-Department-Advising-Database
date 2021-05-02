@@ -1,0 +1,11 @@
+CREATE TABLE Courses (
+Course_ID		INT		IDENTITY(1,1) UNIQUE		NOT NULL,
+Course_Code		NVARCHAR(40)		NULL,
+Course_Name		NVARCHAR(100)		NULL,
+Course_Discipline	NVARCHAR(20)	NULL,
+Credit_Hours		INT		NULL,
+IsWriting_Intensive		BIT		NULL,
+IsUpper_Division	BIT		NULL,
+IsLab		BIT		NULL,
+PRIMARY KEY(Course_ID)
+);

@@ -1,0 +1,6 @@
+CREATE TABLE Semester (
+Semester_ID		INT		UNIQUE		NOT NULL,
+Semester_Season		NVARCHAR(20)	NULL,
+Academic_Year	INT		NULL,
+PRIMARY KEY(Semester_ID)
+);

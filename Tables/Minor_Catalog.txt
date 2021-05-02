@@ -1,0 +1,8 @@
+CREATE TABLE Minor_Catalog (
+Minor_Catalog_ID		INT		UNIQUE		NOT NULL,
+Minor_ID		INT		NULL,
+Catalog_Start		INT		NULL,
+Catalog_End		INT		NULL,
+IsActive		BIT		NULL,
+PRIMARY KEY(Minor_Catalog_ID)
+);

@@ -1,0 +1,8 @@
+CREATE TABLE Major_Catalog (
+Catalog_ID		INT		UNIQUE		NOT NULL,
+Major_ID		INT		NULL,
+Catalog_Start	INT		NULL,
+Catalog_End		INT		NULL,
+isActive	BIT		NULL,
+PRIMARY KEY(Catalog_ID)
+);

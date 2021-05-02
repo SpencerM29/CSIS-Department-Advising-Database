@@ -1,0 +1,5 @@
+CREATE TABLE Requirements (
+Requirement_ID		INT	UNIQUE		NOT NULL,
+Requirement_Name	NVARCHAR(50)	NULL,
+PRIMARY KEY(Requirement_ID)
+);

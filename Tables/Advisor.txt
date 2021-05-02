@@ -1,0 +1,8 @@
+CREATE TABLE Advisor (
+Advisor_ID	INT		UNIQUE		NOT NULL,
+Advisor_Login_ID	INT	NULL,
+Advisor_FName	NVARCHAR(20)	NULL,
+Advisor_LName	NVARCHAR(20)	NULL,
+Advisor_Email	NVARCHAR(50)	NULL,
+PRIMARY KEY(Advisor_ID)
+);

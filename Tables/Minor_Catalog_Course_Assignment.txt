@@ -1,0 +1,8 @@
+CREATE TABLE Minor_Catalog_Course_Assignment (
+Assignment_Entry_ID		INT		UNIQUE		NOT NULL,
+Minor_Catalog_ID		INT		NULL,
+Course_ID			INT		NULL,
+Requirement_ID			INT		NULL,
+Semester_Assigned		INT		NULL,
+PRIMARY KEY(Assignment_Entry_ID)
+);
