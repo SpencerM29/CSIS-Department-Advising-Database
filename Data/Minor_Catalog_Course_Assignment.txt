@@ -1,0 +1,38 @@
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(1, 1, 29, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(2, 1, 30, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(3, 1, 45, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(4, 1, 50, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(5, 1, 81, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(6, 1, 81, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(7, 1, 81, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(8, 1, 81, 2, NULL);
+
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(9, 2, 27, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(10, 2, 29, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(11, 2, 30, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(12, 2, 28, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(13, 2, 31, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(14, 2, 34, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(15, 2, 38, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(16, 2, 39, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(17, 2, 33, 2, NULL);
+
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(18, 3, 62, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(19, 3, 33, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(20, 3, 53, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(21, 3, 50, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(22, 3, 68, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(23, 3, 69, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(24, 3, 63, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(25, 3, 70, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(26, 3, 71, 2, NULL);
+
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(27, 4, 59, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(28, 4, 27, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(29, 4, 29, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(30, 4, 30, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(31, 4, 60, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(32, 4, 28, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(33, 4, 47, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(34, 4, 49, 2, NULL);
+INSERT INTO Minor_Catalog_Course_Assignment VALUES(35, 4, 3, 2, NULL);

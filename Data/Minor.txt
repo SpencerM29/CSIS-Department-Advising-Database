@@ -1,0 +1,4 @@
+INSERT INTO Minor VALUES(1, 'Computer Science');
+INSERT INTO Minor VALUES(2, 'Computer Information Systems');
+INSERT INTO Minor VALUES(3, 'Cybersecurity');
+INSERT INTO Minor VALUES(4, 'Computer Information Technology');

@@ -1,0 +1,4 @@
+INSERT INTO Enrollment VALUES(1, 'iy5071cs');
+INSERT INTO Enrollment VALUES(2, 'ab1234cd');
+INSERT INTO Enrollment VALUES(3, 'ij9012kl');
+INSERT INTO Enrollment VALUES(4, 'ef5678gh');

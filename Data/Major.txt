@@ -1,0 +1,4 @@
+INSERT INTO Major VALUES(1, 'Computer Science');
+INSERT INTO Major VALUES(2, 'Computer Information Systems');
+INSERT INTO Major VALUES(3, 'Cybersecurity');
+INSERT INTO Major VALUES(4, 'Computer Information Technology');

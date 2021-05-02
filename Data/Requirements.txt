@@ -1,0 +1,8 @@
+INSERT INTO Requirements VALUES(1, 'Major Required');
+INSERT INTO Requirements VALUES(2, 'Minor Required');
+INSERT INTO Requirements VALUES(3, 'LASC');
+INSERT INTO Requirements VALUES(4, 'CSIS Elective');
+INSERT INTO Requirements VALUES(5, 'General Elective');
+INSERT INTO Requirements VALUES(6, 'Related Requirement');
+INSERT INTO Requirements VALUES(7, 'Graduation Requirement');
+INSERT INTO Requirements VALUES(8, 'CSIS Capstone');

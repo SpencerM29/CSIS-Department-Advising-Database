@@ -1,0 +1,4 @@
+INSERT INTO Major_Catalog VALUES (1, 1, 20213, NULL, 1);
+INSERT INTO Major_Catalog VALUES (2, 2, 20213, NULL, 1);
+INSERT INTO Major_Catalog VALUES (3, 3, 20213, NULL, 1);
+INSERT INTO Major_Catalog VALUES (4, 4, 20213, NULL, 1);

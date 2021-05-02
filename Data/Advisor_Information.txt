@@ -1,0 +1,2 @@
+INSERT INTO Advisor_Information VALUES(1, 'ksMNstate', '1234!@#$');
+INSERT INTO Advisor_Information VALUES(2, 'jdMNstate', 'jdjdjd');

@@ -1,0 +1,103 @@
+--Lasc Courses
+INSERT INTO Courses VALUES ('LASC 1A', 'Speech Communication (COMM 100)', 'COMM', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('LASC 1B', 'English Composition (ENGL 101)', 'ENGL', 3, 1, 0, 0);
+INSERT INTO Courses VALUES ('LASC 2', 'LASC GOAL AREA 2 COURSE', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 3 DISCIPLINE 1', 'LASC GOAL AREA 3 DISCIPLINE 1', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 3 DISCIPLINE 1 Writing Intensive', 'LASC GOAL AREA 3 DISCIPLINE 1 WRITING INTENSIVE', 'LASC', 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 3 DISCIPLINE 2 W/ LAB', 'LASC GOAL AREA 3 COURSE DISCIPLINE 2 WITH LAB', 'LASC', 3, NULL, NULL, 1);
+INSERT INTO Courses VALUES ('LASC 4', 'LASC GOAL AREA 4 COURSE', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 5 DISCIPLINE 1', 'LASC GOAL AREA 5 DISCIPLINE 1', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 5 DISCIPLINE 1 Writing Intensive', 'LASC GOAL AREA 5 DISCIPLINE 1 WRITING INTENSIVE', 'LASC', 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 5 DISCIPLINE 2', 'LASC GOAL AREA 5 DISCIPLINE 2', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 5 DISCIPLINE 2 Writing Intensive', 'LASC GOAL AREA 5 DISCIPLINE 2 WRITING INTENSIVE', 'LASC', 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 6 DISCIPLINE 1', 'LASC GOAL AREA 6 DISCIPLINE 1', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 6 DISCIPLINE 1 Writing Intensive', 'LASC GOAL AREA 6 DISCIPLINE 1 WRITING INTENSIVE', 'LASC', 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 6 DISCIPLINE 2', 'LASC GOAL AREA 6 DISCIPLINE 2', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 6 DISCIPLINE 2 Writing Intensive', 'LASC GOAL AREA 6 DISCIPLINE 1 WRITING INTENSIVE', 'LASC', 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 7', 'LASC GOAL AREA 7 COURSE', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 7 Writing Intensive', 'LASC GOAL AREA 7 Writing Intensive Course', 'LASC', 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 8', 'LASC GOAL AREA 8 COURSE', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 8 Writing Intensive', 'LASC GOAL AREA 8 Writing Intensive Course', 'LASC', 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 9', 'LASC GOAL AREA 9 COURSE', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 9 Writing Intensive', 'LASC GOAL AREA 9 Writing Intensive Course', 'LASC', 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 10', 'LASC GOAL AREA 10 COURSE', 'LASC', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('LASC 10 Writing Intensive', 'LASC GOAL AREA 10 Writing Intensive Course', 'LASC', 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('FREE ELECTIVE', 'Any Free Elective Course', NULL, 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('FREE ELECTIVE WI', 'Any Writing Intensive Elective Course', NULL, 3, 1, NULL, NULL);
+INSERT INTO Courses VALUES ('FYE 101', 'First Year Experience', 'FYE', 1, NULL, NULL, NULL);
+
+--Major Courses
+INSERT INTO Courses VALUES ('CSIS 145', 'Introduction to Information Systems', 'CSIS', 1, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 241', 'Introduction to Web Design and Development', 'CSIS', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 152', 'Introduction to Computers and Programming I-a', 'CSIS', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 153', 'Introduction to Computers and Programming I-b', 'CSIS', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 304', 'Databases', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 336', 'C#.Net Programming', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 349', 'Networks and Data Communications', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 340', 'Software Engineering', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 405', 'E-Commerce Technology', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 433', 'Design, Implementation and Support of Information Systems', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 446', 'Intelligent and Predictive Systems', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('ACCT 230', 'Principles of Accounting I', 'ACCT', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('ACCT 231', 'Principles of Accounting II', 'ACCT', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('ENGL 387', 'Technical Report Writing', 'ENGL', 3, 1, 1, 0);
+INSERT INTO Courses VALUES ('FINC 340', 'Financial Management', 'FINC', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('MGMT 260', 'Principles of Management', 'MGMT', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('MGMT 380', 'Operations Management', 'MGMT', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('MGMT 456', 'Project Management in Business', 'MGMT', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 252', 'Introduction to Computers and Programming II', 'CSIS', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 290', 'Special Topics', 'CSIS', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 311', 'Server-Side Scripting', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 335', 'Graphical User Interface Programming', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 341', 'System and Network Administration', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 352', 'Advanced Concepts in Programming', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 360', 'Linux Programming and Development Tools', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 365', 'Mobile Application Development & Programming', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 349L', 'Networking and Data Communications Lab', 'CSIS', 1, 0, 1, 1);
+INSERT INTO Courses VALUES ('CSIS 441', 'Network Security', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 469', 'Internship', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 490', 'Topics in Computer Science and Information Systems', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 494', 'Undergraduate Research', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 103', 'Computer Concepts and Applications', 'CSIS', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 104', 'Spreadsheet and Database Applications', 'CSIS', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 222', 'Computer Maintenance', 'CSIS', 1, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 115', 'Introdcution to MacOS X', 'CSIS', 1, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 320', 'Architecture', 'CSIS', 4, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 430', 'Operating Systems', 'CSIS', 4, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 455', 'Compilers', 'CSIS', 4, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 450', 'Programming Languages', 'CSIS', 4, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 492', 'Senior Seminar', 'CSIS', 1, 0, 1, 0);
+INSERT INTO Courses VALUES ('MATH 335', 'Intermediate Probability and Statistics I', 'MATH', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 362', 'Cybersecurity Fundamentals', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 364', 'Information Systems Security', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 462', 'Software Security', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 464', 'Software Security Analysis', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('CSIS 434', 'Modern Software Development', 'CSIS', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('PMGT 385', 'Process Leadership', 'PMGT', 3, 1, 1, 0);
+INSERT INTO Courses VALUES ('PMGT 300', 'Project Management and Scheduling', 'PMGT', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('PMGT 401', 'Customer Relationship Management Consulting', 'PMGT', 3, 0, 1, 0);
+INSERT INTO Courses VALUES ('MATH 210', 'Concepts from Discrete Mathematics (Goal 4)', 'MATH', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('MATH 227', 'Survey of Differential Calculus with Algebra', 'MATH', 4, 0, 0, 0);
+INSERT INTO Courses VALUES ('MATH 229', 'Topics in Calculus', 'MATH', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('MATH 234', 'Introduction to Probability and Statistics', 'MATH', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('CSIS 316', 'Ethics in the Information Age (W)', 'CSIS', 3, 1, 1, 0);
+INSERT INTO Courses VALUES ('CSIS Elective', 'CSIS Elective Course', 'CSIS', 3, NULL, NULL, NULL);
+INSERT INTO Courses VALUES ('CSIS Capstone', 'CSIS Capstone Course', 'CSIS', NULL, NULL, NULL, NULL);
+INSERT INTO Courses VALUES('OM 380', 'Methods Improvement', 'OM', 3, 0, 1, 0);
+INSERT INTO Courses VALUES('MGMT 371', 'Introduction to Business Analytics', 'MGMT', 3, 0, 1, 0);
+INSERT INTO Courses VALUES('MGMT 433', 'Predictive Analytics', 'MGMT', 3, 0, 1, 0);
+INSERT INTO Courses VALUES('MGMT 480', 'Prescriptive Analytics', 'MGMT', 3, 0, 1, 0);
+INSERT INTO Courses VALUES('PMGT 400', 'Advanced Project Management, Risk and Liability', 'PMGT', 3, 0, 1, 0);
+INSERT INTO Courses VALUES('MATH 261', 'Calculus I', 'MATH', 3, 0, 0, 0);
+INSERT INTO Courses VALUES ('CHEM 150/150L', 'General Chemistry I (Lab)', 'CHEM', 4, 0, 0, 1);
+INSERT INTO Courses VALUES ('PHYS 160', 'College Physics I (Lab)', 'PHYS', 4, 0, 0, 1);
+INSERT INTO Courses VALUES ('PHYS 200', 'General Physics I (Lab)', 'PHYS', 4, 0, 0, 1);
+
+
+
+
+
+
+
+
+
