@@ -1,0 +1,18 @@
+--This stored procedure will completely delete the existence of the student from the database.
+
+CREATE PROCEDURE [dbo].[DeleteStudentEntirely]
+@StarID NVARCHAR(10)
+AS
+	DECLARE @EnrollmentID INT
+	SET @EnrollmentID = (SELECT Enrollment_ID From Enrollment WHERE Star_ID = @StarID)
+
+	DELETE FROM Student WHERE Star_ID = @StarID
+	DELETE FROM Student_Schedule WHERE Star_ID = @StarID
+	DELETE FROM Lasc_Entry WHERE Lasc_Enrollment_ID = @EnrollmentID
+	DELETE FROM Major_Entry WHERE Enrollment_ID = @EnrollmentID
+	DELETE FROM Enrollment WHERE Star_ID = @StarID
+
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE DeleteStudentEntirely @StarID = 'qw6543po'

@@ -1,0 +1,45 @@
+--This stored procedure run many of the stored procedures to populate the base schedule for the student.
+--This will be the most commonly used stored procedure and is the most important stored procedure in this database.
+
+CREATE PROCEDURE [dbo].[CreateStudentMasterQuery]
+@Star_ID NVARCHAR(10),
+@Dragon_ID INT,
+@Student_Major NVARCHAR(50),
+@Starting_Semester_ID INT,
+@Advisor_First_Name NVARCHAR(20),
+@Advisor_Last_Name NVARCHAR(20),
+@Student_Minor_1 NVARCHAR(50) = NULL,
+@Student_Minor_2 NVARCHAR(50) = NULL
+AS
+	
+	EXECUTE CreateStudent @StarID = @Star_ID, @DragonID = @Dragon_ID
+
+	EXECUTE AssignAdvisor @StarID = @Star_ID, @AdvisorFirstName = @Advisor_First_Name, @AdvisorLastName = @Advisor_Last_Name
+
+	EXECUTE AssignNewCatalog @StarID = @Star_ID, @StudentMajor = @Student_Major
+
+	EXECUTE AssignEnrollmentID @StarID = @Star_ID
+
+	EXECUTE CreateLascEntries @StudentMajor = @Student_Major, @StarID = @Star_ID, @StartingSemesterID = @Starting_Semester_ID
+
+	EXECUTE CreateMajorEntries @StudentMajor = @Student_Major, @StarID = @Star_ID, @StartingSemesterID = @Starting_Semester_ID
+
+	EXECUTE CreateStudentSchedule @StarID = @Star_ID, @StudentMajor = @Student_Major, @BeginningSemesterID = @Starting_Semester_ID
+
+	IF (@Student_Minor_1 IS NOT NULL)
+	BEGIN
+		EXECUTE AssignMinor1 @StarID = @Star_ID, @StudentMinor1 = @Student_Minor_1
+		EXECUTE ReplaceCoursesWithMinorCourses @StarID = @Star_ID, @StudentMinor = @Student_Minor_1
+	END
+
+	IF (@Student_Minor_2 IS NOT NULL)
+	BEGIN
+		EXECUTE AssignMinor2 @StarID = @Star_ID, @StudentMinor2 = @Student_Minor_2
+		EXECUTE ReplaceCoursesWithMinorCourses @StarID = @Star_ID, @StudentMinor = @Student_Minor_2
+	END		
+	
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE CreateStudentMasterQuery @Star_ID = 'mn1234zx', @Dragon_ID = 16294819, @Student_Major = 'Computer Science', @Starting_Semester_ID = 20223, @Advisor_First_Name = 'John', @Advisor_Last_Name = 'Doe', @Student_Minor_1 = 'Computer Information Systems', @Student_Minor_2 = 'Computer Information Technology'
+--EXECUTE CreateStudentMasterQuery @Star_ID = 'la1092al', @Dragon_ID = 19824713, @Student_Major = 'Computer Information Systems', @Starting_Semester_ID = 20213, @Advisor_First_Name = 'John', @Advisor_Last_Name = 'Doe', @Student_Minor_1 = 'Computer Science'

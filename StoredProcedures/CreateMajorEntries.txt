@@ -1,0 +1,83 @@
+--This stored procedure will create the major entries for the major courses the student will take.
+
+CREATE PROCEDURE [dbo].[CreateMajorEntries]
+@StudentMajor NVARCHAR(50),
+@StarID NVARCHAR(10),
+@StartingSemesterID INT
+AS
+	
+	DECLARE @CatalogID INT
+	SET @CatalogID = (SELECT Catalog_ID FROM 
+			(Major_Catalog INNER JOIN Major ON Major_Catalog.Major_ID = Major.Major_ID)
+			WHERE Major = @StudentMajor
+			AND isActive = 1)
+
+	DECLARE @EnrollmentID INT
+	SET @EnrollmentID = (SELECT Enrollment_ID from Enrollment WHERE Star_ID = @StarID)
+
+	CREATE TABLE #Temp2
+	(
+		[Assignment_Entry_ID] [int] NOT NULL,
+		[Catalog_ID] [int] NULL,
+		[Course_ID] [int] NULL,
+		[Requirement_ID] [int] NULL,
+		[Semester_Assigned] [int] NULL,
+		[TmpUsed] [int] NULL,
+	);
+
+	INSERT INTO #Temp2 (Assignment_Entry_ID, Catalog_ID, Course_ID, Requirement_ID, Semester_Assigned)
+	SELECT * FROM Catalog_Course_Assignment WHERE Requirement_ID IN (1, 4, 5, 6, 8) AND Catalog_ID = @CatalogID
+	UPDATE #Temp2 SET TmpUsed = 1 WHERE Catalog_ID = @CatalogID
+
+	CREATE TABLE #TempSemester
+	(
+		[Semester_ID] [int] NOT NULL,
+		[Semester_Season] [nvarchar](20) NULL,
+		[Academic_Year] [int] NULL,
+		[Semester_Assigned] [int] NULL,
+	);
+
+	INSERT INTO #TempSemester (Semester_ID, Semester_Season, Academic_Year)
+	SELECT * FROM Semester WHERE Semester_Season != 'Summer' AND Semester_ID >= @StartingSemesterID
+
+	DECLARE @Ct INT = 1
+	WHILE (@Ct < 9)
+	BEGIN
+		DECLARE @TopSemID INT
+		SET @TopSemID = (SELECT TOP 1 Semester_ID FROM #TempSemester WHERE Semester_Assigned IS NULL)
+		UPDATE #TempSemester SET Semester_Assigned = @Ct WHERE Semester_ID = @TopSemID
+		SET @Ct = @Ct + 1
+	END
+
+	WHILE (Exists(SELECT * FROM #Temp2 WHERE (SELECT COUNT(*) FROM #Temp2 WHERE TmpUsed = 1) > 0 ))
+	BEGIN
+		DECLARE @CourseID INT
+		SET @CourseID = (SELECT TOP 1 Course_ID FROM #Temp2 WHERE TmpUsed = 1)
+		DECLARE @AssignEntryID INT
+		SET @AssignEntryID = (SELECT TOP 1 Assignment_Entry_ID FROM #Temp2 WHERE TmpUsed = 1)
+
+
+	
+		DECLARE @SemesterTaken INT
+		SET @SemesterTaken = (SELECT Semester_ID FROM #Temp2 
+							INNER JOIN #TempSemester ON 
+							#Temp2.Semester_Assigned = #TempSemester.Semester_Assigned 
+							WHERE Course_ID = @CourseID)
+		INSERT INTO Major_Entry VALUES (
+		(SELECT MAX(Major_Entry_ID) + 1 FROM Major_Entry ),
+		@EnrollmentID,
+		@CourseID,
+		@SemesterTaken,
+		0
+		);
+
+		UPDATE #Temp2 SET TmpUsed = NULL WHERE Assignment_Entry_ID = @AssignEntryID
+	END
+
+	DROP TABLE #Temp2
+	DROP TABLE #TempSemester
+
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE CreateMajorEntries @StudentMajor = 'Computer Science', @StarID = 'qw6543po', @StartingSemesterID = 20213

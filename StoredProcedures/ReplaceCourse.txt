@@ -1,0 +1,33 @@
+--This stored procedure will replace a specific course with a different course.
+--This stored procedure will be used if the student wants to change around their schedule and not use the base schedule.
+
+CREATE PROCEDURE [dbo].[ReplaceCourse]
+@Star_ID NVARCHAR(10),
+@Catalog_ID INT,
+@Semester_ID INT,
+@Course_ID INT,
+@Requirement_ID INT,
+@Replacement_Course_ID INT,
+@Replacement_Requirement_ID INT
+AS
+BEGIN
+	DECLARE @Entry_ID INT
+	SET @Entry_ID = 
+	(SELECT MIN(Entry_ID) FROM Student_Schedule
+	WHERE Catalog_ID = @Catalog_ID
+	AND Course_ID = @Course_ID
+	AND Semester_ID = @Semester_ID
+	AND Star_ID = @Star_ID
+	AND Requirement_ID = @Requirement_ID
+	AND @Course_ID in (SELECT Course_ID FROM Student_Schedule))
+	
+
+	UPDATE Student_Schedule
+	SET Course_ID = @Replacement_Course_ID,
+	Requirement_ID = @Replacement_Requirement_ID
+	WHERE Entry_ID = @Entry_ID
+END
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE ReplaceCourse @Star_ID = 'qw6543po', @Catalog_ID = 1, @Semester_ID = 20233, @Course_ID = 81, @Requirement_ID = 4, @Replacement_Course_ID = 51, @Replacement_Requirement_ID = 2

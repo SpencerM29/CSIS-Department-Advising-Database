@@ -1,0 +1,17 @@
+--This stored procedure will update the course a student is going to take.
+--This stored procedure differs from the ReplaceCourse stored procedure as this stored procedure
+--is to primarily be used on placeholder courses with a Course_ID of 24 or 81.
+
+CREATE PROCEDURE [dbo].[UpdateCourse]
+@Course_ID INT,
+@Requirement_ID INT,
+@Entry_ID INT
+AS
+	UPDATE Student_Schedule
+	SET Student_Schedule.Course_ID = @Course_ID,
+	Student_Schedule.Requirement_ID = @Requirement_ID
+	WHERE Entry_ID = @Entry_ID
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE UpdateCourse @Course_ID = 51, @Requirement_ID = 4, @Entry_ID = 73

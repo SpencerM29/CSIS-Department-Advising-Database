@@ -1,0 +1,64 @@
+--This stored procedure will replace the placeholder elective courses with the student's minor courses.
+
+CREATE PROCEDURE [dbo].[ReplaceCoursesWithMinorCourses]
+@StarID NVARCHAR(10),
+@StudentMinor NVARCHAR(50)
+AS
+
+	DECLARE @MinorCatalogID INT
+	SET @MinorCatalogID = (SELECT Minor_Catalog_ID FROM
+			Minor_Catalog INNER JOIN Minor ON Minor_Catalog.Minor_Catalog_ID = Minor.Minor_ID
+			WHERE Minor = @StudentMinor)
+
+BEGIN
+	CREATE TABLE #Temp1
+	(
+		[Assignment_Entry_ID] [int] NOT NULL,
+		[Minor_Catalog_ID] [int] NULL,
+		[Course_ID] [int] NULL,
+		[Requirement_ID] [int] NULL,
+		[Semester_Assigned] [int] NULL,
+		[TmpUsed] [int] NULL,
+	);
+
+	INSERT INTO #Temp1 (Assignment_Entry_ID, Minor_Catalog_ID, Course_ID, Requirement_ID, Semester_Assigned)
+	SELECT * FROM Minor_Catalog_Course_Assignment WHERE Minor_Catalog_ID = @MinorCatalogID
+
+	UPDATE #Temp1 SET TmpUsed = 1 WHERE Course_ID NOT IN (SELECT Course_ID FROM Student_Schedule WHERE Star_ID = @StarID)
+
+	WHILE (Exists(SELECT * FROM #Temp1 WHERE (SELECT COUNT(*) FROM #Temp1 WHERE TmpUsed = 1) > 0 ))
+	BEGIN
+		DECLARE @CourseID INT
+		SET @CourseID = (SELECT TOP 1 Course_ID FROM #Temp1 WHERE TmpUsed = 1)
+		DECLARE @EntryID INT
+		SET @EntryID = (SELECT TOP 1 Entry_ID FROM Student_Schedule WHERE Star_ID = @StarID AND Course_ID IN (81, 24))
+
+	
+		IF (SELECT COUNT(*) FROM Student_Schedule WHERE Course_ID IN (81, 24) AND Star_ID = @StarID) > 0 
+			BEGIN
+				UPDATE Student_Schedule SET Course_ID = @CourseID, Requirement_ID = 2 WHERE Entry_ID = @EntryID
+				UPDATE #Temp1 SET TmpUsed = NULL WHERE Course_ID = @CourseID
+			END
+		ELSE
+			BEGIN
+				DECLARE @CurrentCatalogID INT
+				SET @CurrentCatalogID = (SELECT DISTINCT Catalog_ID FROM Student_Schedule WHERE Star_ID = @StarID)
+				INSERT INTO Student_Schedule VALUES (
+					(SELECT MAX(Entry_ID) + 1 FROM Student_Schedule),
+					@StarID,
+					@CurrentCatalogID,
+					@CourseID,
+					2,
+					NULL
+					);
+				UPDATE #Temp1 SET TmpUsed = NULL WHERE Course_ID = @CourseID
+			END
+
+	END
+	DROP TABLE #Temp1
+END
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE ReplaceCoursesWithMinorCourses @StarID = 'qw6543po', @StudentMinor = 'Computer Information Technology'
+--EXECUTE ReplaceCoursesWithMinorCourses @StarID = 'qw6543po', @StudentMinor = 'Computer Information Systems'

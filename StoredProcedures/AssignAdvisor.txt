@@ -1,0 +1,22 @@
+--This stored procedure will assign the student their advisor.
+
+CREATE PROCEDURE [dbo].[AssignAdvisor]
+@StarID NVARCHAR(10),
+@AdvisorFirstName NVARCHAR(20),
+@AdvisorLastName NVARCHAR(20)
+AS
+	BEGIN
+		DECLARE @AdvisorID INT
+		SET @AdvisorID = (SELECT Advisor_ID FROM Advisor 
+		WHERE Advisor_FName = @AdvisorFirstName AND
+		Advisor_LName = @AdvisorLastName)
+
+		UPDATE Student
+		SET Advisor_ID = @AdvisorID
+		WHERE Star_ID = @StarID
+	END
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE AssignAdvisor @StarID = 'qw6543po', @AdvisorFirstName = 'John', @AdvisorLastName = 'Doe'
+

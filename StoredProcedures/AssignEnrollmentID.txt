@@ -1,0 +1,15 @@
+--This is a stored procedure that assigns the student an Enrollment_ID.
+--This ID is used to assign students lasc and major entries.
+
+CREATE PROCEDURE [dbo].[AssignEnrollmentID]
+@StarID NVARCHAR(10)
+AS
+	BEGIN
+		INSERT INTO Enrollment VALUES (
+			(SELECT MAX(Enrollment_ID) + 1 FROM Enrollment),
+			@StarID);
+	END
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE AssignEnrollmentID @StarID = 'qw6543po'

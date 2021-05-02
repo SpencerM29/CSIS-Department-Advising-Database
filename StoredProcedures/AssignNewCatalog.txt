@@ -1,0 +1,22 @@
+--This stored procedure will assign the student a catalog. The catalog will depend on the student's major.
+
+CREATE PROCEDURE [dbo].[AssignNewCatalog]
+@StarID NVARCHAR(10),
+@StudentMajor NVARCHAR(50)
+AS
+	BEGIN
+		DECLARE @CatalogID INT
+		SET @CatalogID = (SELECT Catalog_ID FROM 
+			(Major_Catalog INNER JOIN Major ON Major_Catalog.Major_ID = Major.Major_ID)
+			WHERE Major = @StudentMajor
+			AND isActive = 1)
+
+		UPDATE Student
+		SET Catalog_ID = @CatalogID
+		WHERE Star_ID = @StarID
+
+	END
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE AssignNewCatalog @StarID = 'qw6543po', @StudentMajor = 'Computer Science'

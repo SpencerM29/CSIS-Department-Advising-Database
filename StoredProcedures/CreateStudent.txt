@@ -1,0 +1,21 @@
+--This is the stored procedure that creates a student in the database.
+--This is typically the first stored procedure that is run, specifically in the master query stored procedure.
+
+CREATE PROCEDURE [dbo].[CreateStudent]
+@StarID NVARCHAR(10),
+@DragonID INT
+AS
+	BEGIN
+		INSERT INTO Student VALUES (
+			@StarID,
+			@DragonID,
+			NULL,
+			NULL,
+			NULL,
+			NULL
+			);
+	END
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE CreateStudent @StarId = 'qw6543po', @DragonID =12568923

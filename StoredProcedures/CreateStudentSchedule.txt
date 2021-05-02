@@ -1,0 +1,83 @@
+--This stored procedure will create the base schedule for the student, not including minor courses.
+--The minor courses can be added to the base schedule using the ReplaceCoursesWithMinorCourses stored procedure.
+
+CREATE PROCEDURE [dbo].[CreateStudentSchedule]
+@StarID NVARCHAR(10),
+@StudentMajor NVARCHAR(50),
+@BeginningSemesterID INT
+AS
+
+	DECLARE @CatalogID INT
+	SET @CatalogID = (SELECT Catalog_ID FROM 
+			(Major_Catalog INNER JOIN Major ON Major_Catalog.Major_ID = Major.Major_ID)
+			WHERE Major = @StudentMajor
+			AND isActive = 1)
+
+	CREATE TABLE #Temp4
+		(
+			[Assignment_Entry_ID] [int] NOT NULL,
+			[Catalog_ID] [int] NULL,
+			[Course_ID] [int] NULL,
+			[Requirement_ID] [int] NULL,
+			[Semester_Assigned] [int] NULL,
+			[TmpUsed] [int] NULL,
+		);
+
+	INSERT INTO #Temp4 (Assignment_Entry_ID, Catalog_ID, Course_ID, Requirement_ID, Semester_Assigned)
+	SELECT * FROM Catalog_Course_Assignment WHERE Catalog_ID = @CatalogID
+	UPDATE #Temp4 SET TmpUsed = 1 WHERE Catalog_ID = @CatalogID
+
+	CREATE TABLE #TempSemester
+	(
+		[Semester_ID] [int] NOT NULL,
+		[Semester_Season] [nvarchar](20) NULL,
+		[Academic_Year] [int] NULL,
+		[Semester_Assigned] [int] NULL,
+	);
+
+	INSERT INTO #TempSemester (Semester_ID, Semester_Season, Academic_Year)
+	SELECT * FROM Semester WHERE Semester_Season != 'Summer' AND Semester_ID >= @BeginningSemesterID
+
+	DECLARE @Ct INT = 1
+	WHILE (@Ct < 9)
+	BEGIN
+		DECLARE @TopSemID INT
+		SET @TopSemID = (SELECT TOP 1 Semester_ID FROM #TempSemester WHERE Semester_Assigned IS NULL)
+		UPDATE #TempSemester SET Semester_Assigned = @Ct WHERE Semester_ID = @TopSemID
+		SET @Ct = @Ct + 1
+	END
+
+	WHILE (Exists(SELECT * FROM #Temp4 WHERE (SELECT COUNT(*) FROM #Temp4 WHERE TmpUsed = 1) > 0 ))
+	BEGIN
+		DECLARE @CourseID INT
+		SET @CourseID = (SELECT TOP 1 Course_ID FROM #Temp4 WHERE TmpUsed = 1)
+		DECLARE @AssignEntryID INT
+		SET @AssignEntryID = (SELECT TOP 1 Assignment_Entry_ID FROM #Temp4 WHERE TmpUsed = 1)
+	
+		DECLARE @SemesterTaken INT
+		SET @SemesterTaken = (SELECT Semester_ID FROM #Temp4 
+							INNER JOIN #TempSemester ON 
+							#Temp4.Semester_Assigned = #TempSemester.Semester_Assigned 
+							WHERE Course_ID = @CourseID)
+
+		DECLARE @RequirementID INT
+		SET @RequirementID = (SELECT TOP 1 Requirement_ID FROM #Temp4 WHERE TmpUsed = 1)
+
+		INSERT INTO Student_Schedule VALUES (
+		(SELECT MAX(Entry_ID) + 1 FROM Student_Schedule),
+		@StarID,
+		@CatalogID,
+		@CourseID,
+		@RequirementID,
+		@SemesterTaken
+		);
+
+		UPDATE #Temp4 SET TmpUsed = NULL WHERE Assignment_Entry_ID = @AssignEntryID
+	END
+
+	DROP TABLE #Temp4
+	DROP TABLE #TempSemester
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE CreateStudentSchedule @StarID = 'qw6543po', @StudentMajor = 'Computer Science', @BeginningSemesterID = 20213

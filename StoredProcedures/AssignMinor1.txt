@@ -1,0 +1,21 @@
+--This stored procedure will assign a first minor to the student (if applicable).
+
+CREATE PROCEDURE [dbo].[AssignMinor1]
+@StarID NVARCHAR(10),
+@StudentMinor1 NVARCHAR(50)
+AS
+	BEGIN
+			DECLARE @CatalogID INT
+			SET @CatalogID = (SELECT Minor_Catalog_ID FROM
+							(Minor_Catalog INNER JOIN Minor ON Minor_Catalog.Minor_ID = Minor.Minor_ID)
+							WHERE Minor = @StudentMinor1
+							AND isActive = 1)
+
+			UPDATE Student 
+			SET Minor_Catalog_ID_1 = @CatalogID
+			WHERE Star_ID = @StarID
+	END
+GO
+
+--EXAMPLE USAGE:
+--EXECUTE AssignMinor1 @StarID = 'qw6543po', @StudentMinor1 = 'Computer Information Technology'
